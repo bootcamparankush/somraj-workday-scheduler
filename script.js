@@ -1,12 +1,7 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-
-// Today's date and time function using date.js
-
 // Display today's day and date
 
 var todaysDate = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
+
 $("#currentDay").html(todaysDate);
 
 
@@ -22,13 +17,19 @@ $(document).ready(function () {
   })
  
   function timeTracker() {
-      //get current number of hours.
-      var timeNow = dayjs().hour();
+      //get current number of hours from dayjs
+    var timeNow = dayjs().hour();
+    // var timesNow = dayjs().calendar(null, {sameDay: '[Today at] h:mm A'});
+    // var timeNow = dayjs.duration().asHours();
+
+    console.log(timeNow);
+    // console.log(timeNow);
+
 
       // code to apply the past, present, or future class to each time block by comparing the id to the current hour
       $(".time-block").each(function () {
           var blockTime = parseInt($(this).attr("id").split("hour")[1]);
-
+        console.log(blockTime);
           // check the time and add the classes for background indicators
           if (blockTime < timeNow) {
               $(this).removeClass("future");
@@ -49,17 +50,17 @@ $(document).ready(function () {
       })
   }
 
-  // Get item from local storage if any
-  $("#hour-8 .description").val(localStorage.getItem("hour-8"));
-  $("#hour-9 .description").val(localStorage.getItem("hour-9"));
-  $("#hour-10 .description").val(localStorage.getItem("hour-10"));
-  $("#hour-11 .description").val(localStorage.getItem("hour-11"));
-  $("#hour-12 .description").val(localStorage.getItem("hour-12"));
-  $("#hour-13 .description").val(localStorage.getItem("hour-13"));
-  $("#hour-14 .description").val(localStorage.getItem("hour-14"));
-  $("#hour-15 .description").val(localStorage.getItem("hour-15"));
-  $("#hour-16 .description").val(localStorage.getItem("hour-16"));
-  $("#hour-17 .description").val(localStorage.getItem("hour-17"));
+  // Get item from local storage
+  $("#hour8 .description").val(localStorage.getItem("hour8"));
+  $("#hour9 .description").val(localStorage.getItem("hour9"));
+  $("#hour10 .description").val(localStorage.getItem("hour10"));
+  $("#hour11 .description").val(localStorage.getItem("hour11"));
+  $("#hour12 .description").val(localStorage.getItem("hour12"));
+  $("#hour13 .description").val(localStorage.getItem("hour13"));
+  $("#hour14 .description").val(localStorage.getItem("hour14"));
+  $("#hour15 .description").val(localStorage.getItem("hour15"));
+  $("#hour16 .description").val(localStorage.getItem("hour16"));
+  $("#hour17 .description").val(localStorage.getItem("hour17"));
 
   timeTracker();
 })
